@@ -17,7 +17,7 @@ class ViewController: UIViewController {
     
     func callWebservice() {
         do {
-            let data = try Data.init(contentsOf: URL.init(string: "http://localhost:8080/users")!)
+            let data = try Data.init(contentsOf: URL(string: "http://localhost:8080/users")!)
             let decoder = JSONDecoder()
             let users = try decoder.decode([User].self, from: data)
             print(users)
@@ -32,6 +32,7 @@ class User: Codable, CustomStringConvertible {
     var id : String
     var name : String
     var lastName : String
+   
     var description: String {
         return "\(name), \(lastName), \(id)"
     }
